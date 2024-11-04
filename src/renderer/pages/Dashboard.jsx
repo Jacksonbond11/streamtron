@@ -1,44 +1,42 @@
 import React from "react";
 
-const Dashboard = ({ navigateToUrl }) => {
+const Dashboard = ({ navigateToUrl, handleSetLiveSportsOpen }) => {
+  const apps = [
+    {
+      name: "Netflix",
+      url: "https://netflix.com",
+    },
+    {
+      name: "Youtube",
+      url: "https://youtube.com",
+    },
+    {
+      name: "Twitch",
+      url: "https://twitch.tv",
+    },
+    {
+      name: "Hulu",
+      url: "https://hulu.com",
+    },
+    {
+      name: "Max",
+      url: "https://max.com",
+    },
+  ];
+
   return (
     <div className="w-full">
       <div className="w-1/2 m-auto">
         <h1 className="text-3xl font-bold text-center">Streamtron</h1>
         <div className="grid grid-cols-4 gap-2">
+          {apps.map((app) => {
+            return <button className="btn" onClick={() => navigateToUrl(app.url)}>
+              {app.name}
+            </button>;
+          })}
           <button
             className="btn"
-            onClick={() => navigateToUrl("https://netflix.com")}
-          >
-            Netflix
-          </button>
-          <button
-            className="btn"
-            onClick={() => navigateToUrl("https://youtube.com")}
-          >
-            Youtube
-          </button>
-          <button
-            className="btn"
-            onClick={() => navigateToUrl("https://twitch.tv")}
-          >
-            Twitch
-          </button>
-          <button
-            className="btn"
-            onClick={() => navigateToUrl("https://hulu.com")}
-          >
-            Hulu
-          </button>
-          <button
-            className="btn"
-            onClick={() => navigateToUrl("https://max.com")}
-          >
-            Max
-          </button>
-          <button
-            className="btn"
-            onClick={() => navigateToUrl("https://v3.sportsurge.to")}
+            onClick={() => handleSetLiveSportsOpen()}
           >
             Sports
           </button>
