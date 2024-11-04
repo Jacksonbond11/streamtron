@@ -1,0 +1,42 @@
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const { navigateToUrl } = require('./playwright-script');
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
+  });
+
+  win.loadFile(path.join(__dirname, '../renderer/index.html'));
+}
+
+app.whenReady().then(createWindow);
+
+ipcMain.on('navigateToUrl', async (event, url) => {
+  console.log("Received URL from renderer:", url); // Should log the URL
+  if (!url) {
+    console.error("No URL received from renderer!");
+    return;
+  }
+
+  try {
+    await navigateToUrl(url);
+    console.log(`Playwright script completed for URL: ${url}`);
+  } catch (error) {
+    console.error('Error running Playwright script:', error);
+  }
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit();
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
+});
