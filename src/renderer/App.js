@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className=" bg-gray-700">
       {liveSportsOpen ? (
         <LiveSportsView handleSetLiveSportsOpen={handleSetLiveSportsOpen}/>
       ) : (
