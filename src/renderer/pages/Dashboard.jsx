@@ -25,7 +25,7 @@ const Dashboard = ({ navigateToUrl, handleSetLiveSportsOpen }) => {
   ];
 
   return (
-    <div className="w-full bg-gray-700">
+    <div className="w-full bg-[#424242]">
       <div className="w-1/2 m-auto">
         <h1 className="text-3xl font-bold text-center">Streamtron</h1>
         <div className="grid grid-cols-4 gap-2">
