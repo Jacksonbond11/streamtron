@@ -6,13 +6,14 @@ async function navigateToUrl(url) {
     headless: false,
     args: [
       '--kiosk',
-       '--window-position=0,0'
+       '--window-position=0,0',
+       '--start-maximized'
       
     ],
   });
 
   const context = await browser.newContext({
-    viewport: { width: 1920, height: 1080 }, // Match screen size
+    viewport: { width: 1500, height: 1000 }, // Match screen size
   });
 
   const page = await context.newPage();
