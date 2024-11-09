@@ -4,7 +4,7 @@ const Dashboard = ({ navigateToUrl, handleSetLiveSportsOpen }) => {
   const apps = [
     {
       name: "Netflix",
-      url: "https://netflix.com",
+      url: "https://netflix.com/login",
     },
     {
       name: "Youtube",
