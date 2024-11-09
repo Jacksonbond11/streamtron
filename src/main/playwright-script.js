@@ -1,10 +1,10 @@
 // src/main/playwright-script.js
-const { chromium } = require("playwright");
+const { chromium, firefox } = require("playwright");
 require('dotenv').config();
 
 
 async function navigateToUrl(url) {
-  const browser = await chromium.launch({
+  const browser = await firefox.launch({
     headless: false,
     args: [
       '--kiosk',
